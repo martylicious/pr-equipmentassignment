@@ -1,0 +1,45 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Equipment Service
+
+Equipment API allows users to assign devices to patients
+
+## Assignments Collection [/assignments]
+
+### List All Assignments for a Patient [GET]
+
++ Response 200 (application/json)
+
+        [
+                {
+                        "type" : "SystemOne",
+                        "serialNumber" : "123",
+                        "dateAssigned" : new Date('April 20 2015')
+                },
+                {
+                        "type" : "Trilogy",
+                        "serialNumber" : "456",
+                        "dateAssigned" : new Date('April 19 2015')
+                }
+        ]
+
+### Create New Assignment [POST]
+
+For creating an equipment assignment. It takes a JSON
+object containing a device serial number and assignment date.
+
++ Request (application/json)
+
+        {
+            "serialNumber": "123",
+            "dateAssigned": new Date('April 20 2015')
+        }
+
++ Response 204 (application/json)
+
+    + Headers
+
+    + Body
+
+
