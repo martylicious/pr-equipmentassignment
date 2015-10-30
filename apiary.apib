@@ -18,7 +18,22 @@ Returns a list of device assignments for a given patient.
     
 + Response 200 (application/json)
 
-        "hello"
+        [
+          {
+            "serialNumber": "P123456789012",
+            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
+            "equipmentType": "DeviceOne",
+            "assignmentDate": "2015-04-19T04:00:00.000Z",
+            "userName": null
+          },
+          {
+            "serialNumber": "P210987654321",
+            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
+            "equipmentType": "DeviceTwo",
+            "assignmentDate": "2015-04-19T04:00:00.000Z",
+            "userName": null
+          }
+        ]
 
 
 ### Save Assignment [POST]
