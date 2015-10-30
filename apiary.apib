@@ -41,6 +41,9 @@ Returns a list of device assignments for a given patient.
 For creating an equipment assignment. It takes a JSON
 object containing a device serial number and assignment date.
 
++ Parameters
+    + patientGUID: 1 - A unique patient ID
+  
 + Request (application/json)
 
         {
@@ -60,4 +63,15 @@ object containing a device serial number and assignment date.
                 "validationErrors": null
             }
 
+## Assignments Collection [/equipmentassignment/patient/{patientGUID}/equipment/{serialNumber}]
 
+### Delete Equipment [DELETE]
+
++ Parameters
+    + patientGUID: 1 - A unique patient ID
+  
++ Response 204 (application/json)
+
+    + Headers
+
+    + Body
