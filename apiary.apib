@@ -7,28 +7,19 @@ Equipment API allows users to assign and un-assign devices to patients.  It is a
 possible to create an assignment without a serial number.  Assignments without serial
 numbers can be edited to include the serial number.
 
-## Assignments Collection [/assignments]
+## Assignments Collection [/equipmentassignment/patient/{patientGUID}]
 
-### List All Assignments for a Patient [GET]
+### Patient Assignments [GET]
 
+Returns a list of device assignments for a given patient.
+
++ Parameters
+    + patientGUID: 1 - A unique patient ID
+    
 + Response 200 (application/json)
 
-        [
-          {
-            "serialNumber": "P123456789012",
-            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
-            "equipmentType": "DeviceOne",
-            "assignmentDate": "2015-04-19T04:00:00.000Z",
-            "userName": null
-          },
-          {
-            "serialNumber": "P210987654321",
-            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
-            "equipmentType": "DeviceTwo",
-            "assignmentDate": "2015-04-19T04:00:00.000Z",
-            "userName": null
-          }
-        ]
+        "hello"
+
 
 ### Save Assignment [POST]
 
@@ -53,4 +44,5 @@ object containing a device serial number and assignment date.
             {
                 "validationErrors": null
             }
+
 
