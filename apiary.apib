@@ -63,7 +63,7 @@ object containing a device serial number and assignment date.
                 "validationErrors": null
             }
 
-### Assignment [/equipmentassignment/patient/{patientGUID}/equipment/{serialNumber}]
+## Patient Assignment [/equipmentassignment/patient/{patientGUID}/equipment/{serialNumber}]
 
 ### Delete [DELETE]
 
@@ -72,3 +72,22 @@ object containing a device serial number and assignment date.
     + serialNumber: P123456789012 - A specific device serial number
   
 + Response 204 (application/json)
+
+## Assignment [/equipmentSvc/equipmentassignment/{serialNumber}]
+
+### Get [GET]
+
+Retrieves assignment info without a specific patient guid
+
++ Parameters
+    + serialNumber: P123456789012 - A specific device serial number
+  
++ Response 200 (application/json)
+
+        {
+          "serialNumber": "P123456789012",
+          "patientUUID": "22222222-aaaa-aaaa-aaaa-f7bde18a30c3",
+          "equipmentType": "MaskOne",
+          "assignmentDate": "2015-04-20T04:00:00.000Z",
+          "userName": null
+        }
