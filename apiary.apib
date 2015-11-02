@@ -85,18 +85,10 @@ Retrieve a all assignments for patient.
 
 For creating an equipment assignment. It takes a JSON
 object containing a device serial number and assignment date.
-
-+ Parameters
-    + patientGUID: 1 - A unique patient ID
   
-+ Request (application/json)
++ Request
 
-        {
-            "serialNumber": "P123456789012",
-            "equipmentType": "Device",
-            "assignmentDate": "2015-04-19T04:00:00.000Z",
-            "userName": null
-        }
+    [Assignment][]
 
 + Response 201 (application/json)
 
