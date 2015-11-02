@@ -7,50 +7,43 @@ Equipment API allows users to assign and un-assign devices to patients.  It is a
 possible to create an assignment without a serial number.  Assignments without serial
 numbers can be edited to include the serial number.
 
-## Assignment [/equipmentSvc/equipmentassignment/{serialNumber}]
+## Assignment [/equipmentassignment/{serialNumber}]
 Equipment assignment
 
++ Parameters
+    + serialNumber: P123456789012 - A specific device serial number
+  
 + Model (application/json)
 
     ```js
-        {
-            "serialNumber": "P123456789012",
-            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
-            "equipmentType": "DeviceOne",
-            "assignmentDate": "2015-04-19T04:00:00.000Z",
-            "userName": null
-         }
+    {
+        "serialNumber": "P123456789012",
+        "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
+        "equipmentType": "DeviceOne",
+        "assignmentDate": "2015-04-19T04:00:00.000Z",
+        "userName": null
+    }
     ```
     
-### Get [GET /equipmentSvc/equipmentassignment/{serialNumber}]
+### Retrieve an Assignment [GET]
 
 Retrieves assignment info without a specific patient guid
 
-+ Parameters
-    + serialNumber: P123456789012 - A specific device serial number
-  
-+ Response 200 (application/json)
++ Response 200
 
-        {
-          "serialNumber": "P123456789012",
-          "patientUUID": "22222222-aaaa-aaaa-aaaa-f7bde18a30c3",
-          "equipmentType": "MaskOne",
-          "assignmentDate": "2015-04-20T04:00:00.000Z",
-          "userName": null
-        }
+    [Assignment][]
         
 ## Patient Assignment [/equipmentassignment/patient/{patientGUID}/equipment/{serialNumber}]
+A collection of patient assignments
 
 + Parameters
-    + patientGUID: 1 - A unique patient ID
-    + serialNumber: P123456789012 - A specific device serial number
+    + patientGUID: '123-456-789' (string) - A unique patient ID
+    + serialNumber: 'P123456789012' (string) - A specific device serial number
     
-### Delete Assignment [DELETE]
+### Remove Assignment [DELETE]
 Remove an assignment
-
   
 + Response 204 (application/json)
-        
         
 ## Patient Assignments Collection [/equipmentassignment/patient/{patientGUID}]
 A collection of patient assignments
