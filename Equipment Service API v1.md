@@ -1,7 +1,7 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# Equipment Service API
+# Equipment Service API v1
 
 Equipment API allows users to assign and un-assign devices to patients.  It is also 
 possible to create an assignment without a serial number.  Assignments without serial
