@@ -1,0 +1,110 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Equipment Service API v1
+
+Equipment API allows users to assign and un-assign devices to patients.  It is also 
+possible to create an assignment without a serial number.  Assignments without serial
+numbers can be edited to include the serial number.
+
+## Assignment [/equipmentassignment/{serialNumber}]
+Equipment assignment
+
++ Parameters
+    + serialNumber: P123456789012 - A specific device serial number
+  
++ Model (application/json)
+
+    ```js
+    {
+        "serialNumber": "P123456789012",
+        "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
+        "equipmentType": "DeviceOne",
+        "assignmentDate": "2015-04-19T04:00:00.000Z",
+        "userName": null
+    }
+    ```
+    
+### Retrieve an Assignment [GET]
+
+Retrieves assignment info without a specific patient guid
+
++ Response 200
+
+    [Assignment][]
+        
+## Patient Assignment [/equipmentassignment/patient/{patientGUID}/equipment/{serialNumber}]
+A collection of patient assignments
+
++ Parameters
+    + patientGUID: '123-456-789' (string) - A unique patient ID
+    + serialNumber: 'P123456789012' (string) - A specific device serial number
+    
+### Un-Assign [DELETE]
+Checks that the device is assigned to this patient (if not CONFLICT/403), moves the assignment to the assignment history, removes the assignment from the patient's assignment list.  Does HIPAA logging.  Sends message to exchange 'equipment.message'. 
+  
++ Response 204
+        
++ Response 403
+    
+        {
+          "validationErrors": null
+        }
+
+## Patient Assignments Collection [/equipmentassignment/patient/{patientGUID}]
+A collection of patient assignments
+
++ Parameters
+    + patientGUID: 1 - A unique patient ID
+    
++ Model (application/json)
+
+    ```js
+        [
+          {
+            "serialNumber": "P123456789012",
+            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
+            "equipmentType": "DeviceOne",
+            "assignmentDate": "2015-04-19T04:00:00.000Z",
+            "userName": null
+          },
+          {
+            "serialNumber": "P210987654321",
+            "patientUUID": "4f1fe595-419a-a669-a2e8-22e271da4f80",
+            "equipmentType": "DeviceTwo",
+            "assignmentDate": "2015-04-19T04:00:00.000Z",
+            "userName": null
+          }
+        ]
+    ```
+
+### Retrieve All Assignments [GET]
+
+Retrieve a all assignments for patient.
+
++ Response 200
+
+    [Patient Assignments Collection][]
+
+
+### Create Assignment [POST]
+Creates an equipment assignment. It takes a JSON
+object containing a device serial number and assignment date.
+  
++ Request
+
+    [Assignment][]
+
++ Response 201 (application/json)
+
+    + Headers
+
+    + Body
+
+            {
+                "validationErrors": null
+            }
+
+
+
+
