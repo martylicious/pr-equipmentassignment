@@ -32,6 +32,17 @@ Retrieves assignment info without a specific patient guid
 + Response 200
 
     [Assignment][]
+    
++ Response 401 (application/json)
+
+        {
+            "message": "Not authenticated.", 
+            "access-denied":true,
+            "cause":"NOT AUTHENTICATED"
+        }
+        
++ Response 404 (application/json)
+
         
 ## Patient Assignment [/equipmentassignment/patient/{patientGUID}/equipment/{serialNumber}]
 A collection of patient assignments
@@ -44,6 +55,14 @@ A collection of patient assignments
 Checks that the device is assigned to this patient (if not CONFLICT/403), moves the assignment to the assignment history, removes the assignment from the patient's assignment list.  Does HIPAA logging.  Sends message to exchange 'equipment.message'. 
   
 + Response 204
+        
++ Response 401 (application/json)
+
+        {
+            "message": "Not authenticated.", 
+            "access-denied":true,
+            "cause":"NOT AUTHENTICATED"
+        }
         
 + Response 403
     
@@ -86,6 +105,13 @@ Retrieve a all assignments for patient.
 
     [Patient Assignments Collection][]
 
++ Response 401 (application/json)
+
+        {
+            "message": "Not authenticated.", 
+            "access-denied":true,
+            "cause":"NOT AUTHENTICATED"
+        }
 
 ### Create Assignment [POST]
 Creates an equipment assignment. It takes a JSON
@@ -105,6 +131,12 @@ object containing a device serial number and assignment date.
                 "validationErrors": null
             }
 
++ Response 401 (application/json)
 
+        {
+            "message": "Not authenticated.", 
+            "access-denied":true,
+            "cause":"NOT AUTHENTICATED"
+        }
 
 
